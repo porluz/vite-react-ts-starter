@@ -6,15 +6,14 @@
     "plugin:react/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     // This disables the formatting rules in ESLint that Prettier is going to be responsible for handling.
     // Make sure it"s always the last config, so it gets the chance to override other configs.
-    "eslint-config-prettier"
+    "prettier"
   ],
-  "parser": "@typescript-eslint/parser",
   "settings": {
+    // Tells eslint-plugin-react to automatically detect the version of React to use.
     "react": {
-      // Tells eslint-plugin-react to automatically detect the version of React to use.
       "version": "detect"
     },
     // Tells eslint how to resolve imports
@@ -26,12 +25,19 @@
     }
   },
   "plugins": ["@typescript-eslint", "prettier"],
-  "ignorePatterns": ["node_moduclearles", "build", "dist", "public"],
+  "ignorePatterns": ["node_modules", "build", "dist", "public"],
   "rules": {
+    // custom rules
     "prettier/prettier": ["error"],
-    // "no-console": "warn",
-    // Add your own rules here to override ones from the extended configs.
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }
